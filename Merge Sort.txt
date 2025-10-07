@@ -1,0 +1,24 @@
+def merge_sort(arr):
+    if len(arr)<=1:
+        return arr
+    m = len(arr)//2
+    l = merge_sort(arr[:m])
+    r = merge_sort(arr[m:])
+    return  merge(l,r)
+
+def merge(l,r):
+    c = []
+    left = right = 0
+    while left < len(l) and right < len(r):
+        if l[left] < r[right]:
+            c.append(l[left])
+            left+=1
+        else:
+            c.append(r[right])
+            right +=1
+    c.extend(l[left:])
+    c.extend(r[right:])
+    return c
+
+arr = [3,2,5,4,9,8,11,12,13]
+print(merge_sort(arr))
